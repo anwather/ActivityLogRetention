@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceId": {
+            "type": "string"
+        },
+        "retentionInDays": {
+            "type": "int",
+            "defaultValue": 91,
+            "minValue": 91,
+            "maxValue": 730
+        }
+    },
+    "variables": {
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Insights/diagnosticSettings",
+            "apiVersion": "2017-05-01-preview",
+            "name": "csp-activity-log-settings",
+            "location": "global",
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "logs": [
+                    {
+                        "category": "Administrative",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "Security",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "ServiceHealth",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "Alert",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "Recommendation",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "Policy",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "Autoscale",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    },
+                    {
+                        "category": "ResourceHealth",
+                        "enabled": true,
+                        "retentionPolicy": {
+                            "enabled": true,
+                            "days": "[parameters('retentionInDays')]"
+                        }
+                    }
+
+                ]
+            }
+        }
+    ],
+    "outputs": {
+
+    }
+}
