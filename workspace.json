@@ -50,7 +50,7 @@
                     }
                 },
                 "templateLink": {
-                    "uri": "",
+                    "uri": "https://raw.githubusercontent.com/anwather/ActivityLogRetention/master/linkedworkspace.json",
                     "contentVersion": "1.0.0.0"
                 }
 
@@ -58,5 +58,9 @@
         }
     ],
     "outputs": {
+        "workspaceId": {
+            "type": "string",
+            "value": "[reference('workspaceDeployment').outputs.workspaceId.value]"
+        }
     }
 }
